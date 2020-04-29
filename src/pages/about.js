@@ -1,4 +1,4 @@
-import Layout, { aboutTitle } from "../components/layout";
+import Layout, { aboutTitle, aboutDesc } from "../components/layout";
 import Head from "next/head";
 
 const about = () => {
@@ -6,6 +6,7 @@ const about = () => {
         <Layout>
             <Head>
                 <title>{aboutTitle}</title>
+                <meta name="description" content={aboutDesc} />
             </Head>
             <div>
                 <h1 className="container">about</h1>

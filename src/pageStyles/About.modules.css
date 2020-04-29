@@ -1,0 +1,20 @@
+.pageAbout {
+    color: #5d5d5d;
+    font-family: serif;
+    font-size: 1.3rem;
+    line-height: 1.2;
+}
+.pageTitle {
+    color: rgb(99, 99, 99);
+    font-size: 5rem;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    font-family: "Courgette", cursive;
+}
+.sectionTitle {
+    font-size: 2.5rem;
+    font-family: "Courgette", cursive;
+}
+.img-box {
+    border: 1px solid black;
+    /* height: 200px; */
+}
