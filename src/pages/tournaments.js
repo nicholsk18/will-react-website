@@ -3,6 +3,7 @@ import Layout, {
     tournamentsTitle,
 } from "../components/layout";
 import styles from "../pageStyles/Tournaments.module.css";
+import Stats from "../components/Stats";
 import Head from "next/head";
 
 const tournaments = () => {
@@ -26,7 +27,7 @@ const tournaments = () => {
 
                 <div className="container section-30">
                     <p className="text-center">Season Stats</p>
-                    {/* Seasons stats go here */}
+                    <Stats />
                 </div>
 
                 <div className="section-light-white py-5">

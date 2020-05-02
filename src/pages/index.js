@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Layout, { homeTitle, homeDesc } from "../components/layout";
 import styles from "../pageStyles/Home.module.css";
+import Stats from "../components/Stats";
 import Link from "next/link";
 
 export default function Home({ allPostsData }) {
@@ -26,7 +27,7 @@ export default function Home({ allPostsData }) {
                     </Link>
                 </div>
                 <p className={styles.homeP}>Season Stats</p>
-                {/* <%- include('partials/stats') -%> */}
+                <Stats />
             </div>
 
             <div className="pt-3 pb-5">
