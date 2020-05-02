@@ -1,4 +1,4 @@
-.pageAbout {
+#pageAbout {
     color: #5d5d5d;
     font-family: serif;
     font-size: 1.3rem;
@@ -13,8 +13,10 @@
 .sectionTitle {
     font-size: 2.5rem;
     font-family: "Courgette", cursive;
+    color: rgb(99, 99, 99);
+    text-align: center;
 }
-.img-box {
+.imgBox {
     border: 1px solid black;
     /* height: 200px; */
 }
