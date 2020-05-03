@@ -13,9 +13,9 @@ export const contactDesc = "";
 export const adminTitle = "login";
 
 // admin pages
-export const adminPanalTitle = "";
-export const adminHomeTitle = "";
-export const adminAboutTitle = "";
-export const adminContactTitle = "";
-export const adminTeamTitle = "";
-export const adminTournamentsTitle = "";
+export const adminPanalTitle = "Admin Panal";
+export const adminHomeTitle = "Admin Home";
+export const adminAboutTitle = "Admin About";
+export const adminContactTitle = "Admin Contact";
+export const adminTeamTitle = "Admin Team";
+export const adminTournamentsTitle = "Admin Tournaments";
