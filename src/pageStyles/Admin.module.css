@@ -1,0 +1,10 @@
+.title {
+    text-align: center;
+    font-weight: 500;
+    font-size: 4rem;
+    margin: 20px 0;
+}
+.loginForm {
+    display: flex;
+    flex-direction: column;
+}

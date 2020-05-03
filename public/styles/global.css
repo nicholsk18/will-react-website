@@ -1,10 +1,15 @@
-tml,
+html,
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     /* font-family: 'Roboto Slab', serif; */
     /* position: relative; */
+}
+.layoutWrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 .btn {
     text-transform: uppercase;

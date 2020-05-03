@@ -16,7 +16,7 @@ export const contactDesc = "";
 
 const Layout = (props) => {
     return (
-        <div>
+        <div className="layoutWrap">
             <Head>
                 <meta charSet="UTF-8" />
                 <meta
