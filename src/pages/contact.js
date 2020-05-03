@@ -1,8 +1,29 @@
 import Head from "next/head";
+import { useState } from "react";
 import { contactTitle, contactDesc } from "../components/PageTitles";
 import Layout from "../components/layout";
 
 const contact = () => {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [subject, setSubject] = useState("");
+    const [message, setMessage] = useState("");
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        const sendForm = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name, email, subject, message }),
+        };
+        fetch("/contact", sendForm).then((res) => {
+            // if (res.status) {
+            //     return <Home />;
+            // }
+        });
+    }
     return (
         <Layout>
             <Head>
@@ -21,7 +42,7 @@ const contact = () => {
 
                     <div className="row">
                         <div className="col-sm-12 col-md-6">
-                            <form action="/contacts" method="POST">
+                            <form onSubmit={handleSubmit}>
                                 <div className="form-group">
                                     <input
                                         type="name"
@@ -29,6 +50,9 @@ const contact = () => {
                                         className="form-control"
                                         id="name"
                                         placeholder="Name"
+                                        onChange={(e) =>
+                                            setName(e.target.value)
+                                        }
                                         required
                                     />
                                 </div>
@@ -39,6 +63,9 @@ const contact = () => {
                                         className="form-control"
                                         id="email"
                                         placeholder="name@example.com"
+                                        onChange={(e) =>
+                                            setEmail(e.target.value)
+                                        }
                                         required
                                     />
                                 </div>
@@ -49,6 +76,9 @@ const contact = () => {
                                         className="form-control"
                                         id="subject"
                                         placeholder="Subject"
+                                        onChange={(e) =>
+                                            setSubject(e.target.value)
+                                        }
                                         required
                                     />
                                 </div>
@@ -58,6 +88,9 @@ const contact = () => {
                                         name="message"
                                         id="message"
                                         rows="5"
+                                        onChange={(e) =>
+                                            setMessage(e.target.value)
+                                        }
                                         placeholder="Leave a message here..."
                                     ></textarea>
                                 </div>

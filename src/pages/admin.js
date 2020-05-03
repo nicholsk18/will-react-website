@@ -5,7 +5,7 @@ import { adminTitle } from "../components/PageTitles";
 import styles from "../pageStyles/Admin.module.css";
 
 const admin = () => {
-    const [userName, setUserName] = useState("");
+    const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
     function handleSubmit(event) {
@@ -15,12 +15,12 @@ const admin = () => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ name: "userName", password: "password" }),
+            body: JSON.stringify({ username, password }),
         };
         fetch("/api/admin", sendForm).then((res) => {
-            if (res.status) {
-                return <Home />;
-            }
+            // if (res.status) {
+            //     return <Home />;
+            // }
         });
     }
 
@@ -36,8 +36,6 @@ const admin = () => {
                         <div className="col-12 col-md-6 mx-auto">
                             <form
                                 className={styles.loginForm}
-                                // action="/api/admin"
-                                // method="POST"
                                 onSubmit={handleSubmit}
                             >
                                 <input
