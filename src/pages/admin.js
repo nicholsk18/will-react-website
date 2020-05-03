@@ -1,7 +1,8 @@
 import Head from "next/head";
-import Layout, { adminTitle } from "../components/layout";
-import styles from "../pageStyles/Admin.module.css";
 import { useState } from "react";
+import Layout from "../components/layout";
+import { adminTitle } from "../components/PageTitles";
+import styles from "../pageStyles/Admin.module.css";
 
 const admin = () => {
     const [userName, setUserName] = useState("");
@@ -26,8 +27,7 @@ const admin = () => {
     return (
         <Layout>
             <Head>
-                <title>{homeTitle}</title>
-                <meta name="description" content={homeDesc} />
+                <title>{adminTitle}</title>
             </Head>
             <div className="page">
                 <h3 className={styles.title}>Login Page</h3>

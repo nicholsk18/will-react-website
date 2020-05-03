@@ -1,8 +1,9 @@
 import Head from "next/head";
-import Layout, { homeTitle, homeDesc } from "../components/layout";
+import Link from "next/link";
+import { homeTitle, homeDesc } from "../components/PageTitles";
+import Layout from "../components/layout";
 import styles from "../pageStyles/Home.module.css";
 import Stats from "../components/Stats";
-import Link from "next/link";
 
 export default function Home({ allPostsData }) {
     return (
@@ -18,7 +19,7 @@ export default function Home({ allPostsData }) {
             </div>
             <div className="container section-30">
                 <div className="col-3 m-auto">
-                    <Link href="https://www.shoalcreekclub.com/">
+                    <Link href="//www.shoalcreekclub.com/">
                         <img
                             className={styles.sponsorsImg}
                             src="./img/shoal-creek.png"
@@ -34,56 +35,48 @@ export default function Home({ allPostsData }) {
                 <div className="container">
                     <div className="row">
                         <div className="col-3 m-auto">
-                            <a
-                                href="https://www.titleist.com/"
-                                rel="nofollow"
-                                target="_blank"
-                            >
-                                <img
-                                    className={styles.sponsorsImg}
-                                    src="./img/titleist.png"
-                                    alt=""
-                                />
-                            </a>
+                            <Link href="//www.titleist.com/">
+                                <a rel="nofollow" target="_blank">
+                                    <img
+                                        className={styles.sponsorsImg}
+                                        src="./img/titleist.png"
+                                        alt=""
+                                    />
+                                </a>
+                            </Link>
                         </div>
                         <div className="col-3 m-auto">
-                            <a
-                                href="https://www.footjoy.com/"
-                                rel="nofollow"
-                                target="_blank"
-                            >
-                                <img
-                                    className={styles.sponsorsImg}
-                                    src="./img/footjoy.png"
-                                    alt=""
-                                />
-                            </a>
+                            <Link href="//www.footjoy.com/">
+                                <a rel="nofollow" target="_blank">
+                                    <img
+                                        className={styles.sponsorsImg}
+                                        src="./img/footjoy.png"
+                                        alt=""
+                                    />
+                                </a>
+                            </Link>
                         </div>
                         <div className="col-3 m-auto">
-                            <a
-                                href="https://us.puma.com/"
-                                rel="nofollow"
-                                target="_blank"
-                            >
-                                <img
-                                    className={styles.sponsorsImg}
-                                    src="./img/puma.png"
-                                    alt=""
-                                />
-                            </a>
+                            <Link href="//us.puma.com/">
+                                <a rel="nofollow" target="_blank">
+                                    <img
+                                        className={styles.sponsorsImg}
+                                        src="./img/puma.png"
+                                        alt=""
+                                    />
+                                </a>
+                            </Link>
                         </div>
                         <div className="col-3 m-auto">
-                            <a
-                                href="https://www.testoril.com/"
-                                rel="nofollow"
-                                target="_blank"
-                            >
-                                <img
-                                    className={styles.sponsorsImg}
-                                    src="./img/testoril.png"
-                                    alt=""
-                                />
-                            </a>
+                            <Link href="//www.testoril.com/">
+                                <a rel="nofollow" target="_blank">
+                                    <img
+                                        className={styles.sponsorsImg}
+                                        src="./img/testoril.png"
+                                        alt=""
+                                    />
+                                </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

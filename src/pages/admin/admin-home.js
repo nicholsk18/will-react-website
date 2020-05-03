@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import Layout, { homeTitle, homeDesc } from "../../components/layout";
+import Layout from "../../components/layout";
+import { adminHomeTitle } from "../../components/PageTitles";
 import styles from "../../pageStyles/Home.module.css";
 import Stats from "../../components/Stats";
 
@@ -8,8 +9,7 @@ const adminHome = ({ allPostsData }) => {
     return (
         <Layout>
             <Head>
-                <title>{homeTitle}</title>
-                <meta name="description" content={homeDesc} />
+                <title>{adminHomeTitle}</title>
             </Head>
             <div className="page">
                 <div className={styles.banner}>

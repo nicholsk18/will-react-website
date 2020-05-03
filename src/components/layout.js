@@ -2,18 +2,6 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import Head from "next/head";
 
-export const homeTitle =
-    "The official Website of Professional Golfer Will Cannon";
-export const homeDesc = "";
-export const tournamentsTitle = "Tournaments | Korn Ferry Tour - Will Cannon";
-export const tournamentsDesc = "";
-export const aboutTitle = "Learn more about professional golfer Will Cannon";
-export const aboutDesc = "";
-export const teamTitle = "Learn more about Will team | Will Cannon Golf";
-export const teamDesc = "";
-export const contactTitle = "Contact Will Cannon Today!";
-export const contactDesc = "";
-
 const Layout = (props) => {
     return (
         <div className="layoutWrap">

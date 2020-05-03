@@ -1,6 +1,7 @@
-import Layout, { aboutTitle, aboutDesc } from "../components/layout";
-import styles from "../pageStyles/About.module.css";
 import Head from "next/head";
+import Layout from "../components/layout";
+import { aboutTitle, aboutDesc } from "../components/PageTitles";
+import styles from "../pageStyles/About.module.css";
 
 const about = () => {
     return (

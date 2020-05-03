@@ -1,5 +1,6 @@
-import Layout, { teamDesc, teamTitle } from "../components/layout";
 import Head from "next/head";
+import { teamDesc, teamTitle } from "../components/PageTitles";
+import Layout from "../components/layout";
 
 const team = () => {
     return (

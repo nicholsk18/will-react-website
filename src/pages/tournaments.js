@@ -1,10 +1,8 @@
-import Layout, {
-    tournamentsDesc,
-    tournamentsTitle,
-} from "../components/layout";
+import Head from "next/head";
+import { tournamentsDesc, tournamentsTitle } from "../components/PageTitles";
+import Layout from "../components/layout";
 import styles from "../pageStyles/Tournaments.module.css";
 import Stats from "../components/Stats";
-import Head from "next/head";
 
 const tournaments = () => {
     return (

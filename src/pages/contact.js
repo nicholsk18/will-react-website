@@ -1,5 +1,6 @@
-import Layout, { contactTitle, contactDesc } from "../components/layout";
 import Head from "next/head";
+import { contactTitle, contactDesc } from "../components/PageTitles";
+import Layout from "../components/layout";
 
 const contact = () => {
     return (
