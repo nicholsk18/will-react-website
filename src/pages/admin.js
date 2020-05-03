@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Layout, { homeTitle, homeDesc } from "../components/layout";
+import Layout, { adminTitle } from "../components/layout";
 import styles from "../pageStyles/Admin.module.css";
 import { useState } from "react";
 

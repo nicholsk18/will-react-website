@@ -5,21 +5,22 @@ const Footer = () => {
             <footer className="footer">
                 <div className="container text-center">
                     <div className="py-1">
-                        <a
-                            href="https://twitter.com/willcvnnon"
-                            className="pr-4"
-                        >
-                            <i className="fa fa-twitter fa-2x"></i>
-                        </a>
-                        <a href="https://www.instagram.com/willcvnnon/">
-                            <i className="fa fa-instagram fa-2x"></i>
-                        </a>
+                        <Link href="//twitter.com/willcvnnon">
+                            <a className="pr-4">
+                                <i className="fa fa-twitter fa-2x"></i>
+                            </a>
+                        </Link>
+                        <Link href="//www.instagram.com/willcvnnon/">
+                            <a>
+                                <i className="fa fa-instagram fa-2x"></i>
+                            </a>
+                        </Link>
                     </div>
                     <p className="author">
                         Created by{" "}
                         <strong>
-                            <Link href="https://karsonnichols.com/">
-                                Karson Nichols
+                            <Link href="//www.karsonnichols.com">
+                                <a>Karson Nichols</a>
                             </Link>
                             {". "}
                         </strong>
@@ -27,7 +28,6 @@ const Footer = () => {
                     </p>
                 </div>
             </footer>
-            <script src="./js/index.js"></script>
             <script
                 src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
                 integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
