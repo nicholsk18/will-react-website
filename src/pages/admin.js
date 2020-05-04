@@ -60,7 +60,8 @@ const admin = () => {
                 headers.append("Authorization", "Bearer ");
 
                 const cookies = new Cookies();
-                cookies.set("SESSION", user.token, { path: "/" });
+                cookies.set("SESSION", user.token, { path: "/", expires: 0 });
+
                 console.log(cookies.get("SESSION")); // Pacman
                 Router.push("/admin/panal");
                 return user;
