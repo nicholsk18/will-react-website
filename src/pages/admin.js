@@ -17,7 +17,7 @@ const admin = () => {
             },
             body: JSON.stringify({ username, password }),
         };
-        fetch("/api/admin", sendForm).then((res) => {
+        fetch("/api/admin/login", sendForm).then((res) => {
             // if (res.status) {
             //     return <Home />;
             // }
