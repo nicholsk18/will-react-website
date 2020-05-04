@@ -9,33 +9,40 @@ const admin = () => {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
-    async function handleSubmit(event) {
+    function handleSubmit(event) {
         event.preventDefault();
-        const sendForm = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ username, password }),
-        };
-        await fetch("/api/admin/login", sendForm).then((res) => {
-            if (res.ok) {
-                console.log(res.json());
-                // const { token } = res.json();
-                console.log(token);
-                const loginOption = {
-                    token,
-                    cookieOptions: {
-                        maxAge: 30 * 24 * 60 * 60,
-                        path: "/admin/panal",
-                    },
-                    callback: () => Router.push("/admin/panal"),
-                };
-                // login(loginOption);
-            } else {
-                console.log("Login failed");
-            }
+
+        async function postData() {
+            const response = await fetch("/api/admin/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ username, password }),
+            });
+
+            return response.json();
+        }
+
+        postData().then((data) => {
+            console.log(data);
         });
+
+        // const sendForm = {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({ username, password }),
+        // };
+        // fetch("/api/admin/login", sendForm)
+        //     .then((res) => {
+        //         res.json();
+        //     })
+        //     .then((data) => console.log(data))
+        //     .catch((e) => {
+        //         console.log(e);
+        //     });
     }
 
     return (
