@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
+// import { login } from "next-authentication";
 import Layout from "../components/layout";
 import { adminTitle } from "../components/PageTitles";
 import styles from "../pageStyles/Admin.module.css";
@@ -8,7 +9,7 @@ const admin = () => {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
         const sendForm = {
             method: "POST",
@@ -17,10 +18,23 @@ const admin = () => {
             },
             body: JSON.stringify({ username, password }),
         };
-        fetch("/api/admin/login", sendForm).then((res) => {
-            // if (res.status) {
-            //     return <Home />;
-            // }
+        await fetch("/api/admin/login", sendForm).then((res) => {
+            if (res.ok) {
+                console.log(res.json());
+                // const { token } = res.json();
+                console.log(token);
+                const loginOption = {
+                    token,
+                    cookieOptions: {
+                        maxAge: 30 * 24 * 60 * 60,
+                        path: "/admin/panal",
+                    },
+                    callback: () => Router.push("/admin/panal"),
+                };
+                // login(loginOption);
+            } else {
+                console.log("Login failed");
+            }
         });
     }
 
