@@ -1,4 +1,5 @@
 const express = require("express");
+const auth = require("../middleware/auth");
 const User = require("../models/user");
 
 const router = new express.Router();
@@ -24,6 +25,7 @@ router.post("/api/admin/login", async (req, res) => {
             req.body.password
         );
         const token = await user.generateAuthToken();
+        // res.send("localhost:3000/admin/panal");
         res.status(200).send({ user, token });
     } catch (e) {
         console.log(e);

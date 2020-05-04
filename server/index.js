@@ -2,6 +2,8 @@ const express = require("express");
 const next = require("next");
 const routes = require("./app");
 
+const auth = require("./middleware/auth");
+
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -14,6 +16,10 @@ app.prepare()
         server.use(express.json());
 
         server.use(routes);
+
+        server.get("/admin/panal", auth, (req, res) => {
+            return handle(req, res);
+        });
 
         server.get("*", (req, res) => {
             return handle(req, res);
