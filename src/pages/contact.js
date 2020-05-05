@@ -19,9 +19,7 @@ const contact = () => {
             body: JSON.stringify({ name, email, subject, message }),
         };
         fetch("/contact", sendForm).then((res) => {
-            // if (res.status) {
-            //     return <Home />;
-            // }
+            console.log(res);
         });
     }
     return (
