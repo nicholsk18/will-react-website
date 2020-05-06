@@ -8,3 +8,5 @@ coverage/
 .next
 now.json
 config/dev.env
+
+other.md

@@ -1,11 +1,34 @@
 import Head from "next/head";
 import Link from "next/link";
+
+import { Editor, EditorState, RichUtils } from "draft-js";
+
 import Layout from "../../components/layout";
 import { adminHomeTitle } from "../../components/PageTitles";
 import styles from "../../pageStyles/Home.module.css";
 import Stats from "../../components/Stats";
 
-const adminHome = ({ allPostsData }) => {
+const adminHome = () => {
+    const [editorState, setEditorState] = React.useState(
+        EditorState.createEmpty()
+    );
+
+    const boldText = () => {
+        const nextState = RichUtils.toggleInlineStyle(editorState, "BOLD");
+
+        setEditorState(nextState);
+    };
+
+    const editor = React.useRef(null);
+
+    function focusEditor() {
+        editor.current.focus();
+    }
+
+    React.useEffect(() => {
+        focusEditor();
+    }, []);
+
     return (
         <Layout>
             <Head>
@@ -13,7 +36,18 @@ const adminHome = ({ allPostsData }) => {
             </Head>
             <div className="page">
                 <div className={styles.banner}>
-                    <div className="container py-5"></div>
+                    <div className="container py-5" onClick={focusEditor}>
+                        <button type="button" onClick={boldText}>
+                            Bold
+                        </button>
+                        <Editor
+                            ref={editor}
+                            editorState={editorState}
+                            onChange={(editorState) =>
+                                setEditorState(editorState)
+                            }
+                        />
+                    </div>
                 </div>
             </div>
             <div className="container section-30">
@@ -21,8 +55,8 @@ const adminHome = ({ allPostsData }) => {
                     <Link href="//www.shoalcreekclub.com/">
                         <img
                             className={styles.sponsorsImg}
-                            src="./img/shoal-creek.png"
-                            alt=""
+                            src="../../../img/shoal-creek.png"
+                            alt="Shoal Creek logo"
                         />
                     </Link>
                 </div>
@@ -39,7 +73,7 @@ const adminHome = ({ allPostsData }) => {
                                     <img
                                         className={styles.sponsorsImg}
                                         src="../../../img/titleist.png"
-                                        alt=""
+                                        alt="Titleist logo"
                                     />
                                 </a>
                             </Link>
@@ -50,7 +84,7 @@ const adminHome = ({ allPostsData }) => {
                                     <img
                                         className={styles.sponsorsImg}
                                         src="../../../img/footjoy.png"
-                                        alt=""
+                                        alt="footjoy logo"
                                     />
                                 </a>
                             </Link>
@@ -61,7 +95,7 @@ const adminHome = ({ allPostsData }) => {
                                     <img
                                         className={styles.sponsorsImg}
                                         src="../../../img/puma.png"
-                                        alt=""
+                                        alt="puma logo"
                                     />
                                 </a>
                             </Link>
@@ -72,7 +106,7 @@ const adminHome = ({ allPostsData }) => {
                                     <img
                                         className={styles.sponsorsImg}
                                         src="../../../img/testoril.png"
-                                        alt=""
+                                        alt="testoril logo"
                                     />
                                 </a>
                             </Link>
