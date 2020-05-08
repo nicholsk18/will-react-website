@@ -3,7 +3,7 @@ const User = require("../models/user");
 
 const auth = async (req, res, next) => {
     try {
-        console.log(req.header("Authorization"));
+        // console.log(req.header("SESSION"));
 
         // const token = req.header("Authorization").replace("Bearer", "");
         const token = req.header("Cookie").replace("SESSION=", "");
@@ -21,7 +21,8 @@ const auth = async (req, res, next) => {
         req.user = user;
         next();
     } catch (e) {
-        res.status(401).send({ error: "Please Authenticate." });
+        res.status(401).send();
+        // res.status(401).send({ error: "Please Authenticate." });
     }
 };
 
