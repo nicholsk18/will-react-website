@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useState } from "react";
-// import { login } from "next-authentication";
 import Layout from "../components/layout";
 import { adminTitle } from "../components/PageTitles";
 import styles from "../pageStyles/Admin.module.css";
@@ -51,18 +50,16 @@ const admin = () => {
                 return data;
             })
             .then((user) => {
-                // .setItem("currentUser", JSON.stringify(user));
-                // currentUserSubject.next(user);
-
                 let headers = new Headers({
                     "Content-Type": "application/json",
                 });
+                // testing
                 headers.append("Authorization", "Bearer ");
 
                 const cookies = new Cookies();
-                cookies.set("SESSION", user.token, { path: "/", expires: 0 });
+                cookies.set("auth", user.token, { path: "/", expires: 0 });
 
-                console.log(cookies.get("SESSION")); // Pacman
+                console.log(cookies.get("auth")); // Pacman
                 Router.push("/admin/panal");
                 return user;
             })

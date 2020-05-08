@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Link from "next/link";
-import admin from "../admin";
 import { adminPanalTitle } from "../../components/PageTitles";
 import Layout from "../../components/layout";
 
