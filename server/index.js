@@ -17,8 +17,8 @@ app.prepare()
 
         server.use(routes);
 
-        server.post("/admin/auth", auth, (req, res) => {
-            // return handle(req, res);
+        server.get("/admin/panal", auth, (req, res) => {
+            return handle(req, res);
         });
 
         server.get("*", (req, res) => {

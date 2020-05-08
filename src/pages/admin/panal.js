@@ -3,19 +3,8 @@ import Link from "next/link";
 import admin from "../admin";
 import { adminPanalTitle } from "../../components/PageTitles";
 import Layout from "../../components/layout";
-import fetch from "node-fetch";
-import Router from "next/router";
-import { useEffect } from "react";
 
 const panal = () => {
-    const authResult = authFunc(panal);
-
-    // needs a loader?
-    useEffect(() => {
-        if (!authResult) {
-            Router.push("/admin");
-        }
-    });
     return (
         <Layout>
             <Head>
@@ -70,31 +59,4 @@ const panal = () => {
     );
 };
 
-const authFunc = (panal) => {
-    const sendForm = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    };
-    const res = fetch("/admin/auth", sendForm);
-    // .then((res) => {
-    //     // should extract to new file
-    //     const data = res.json();
-
-    //     if (!res.ok) {
-    //         console.log("redirect here");
-    //     }
-    //     return data;
-    // })
-    // .catch((e) => {
-    //     // console.log(e);
-    // });
-    if (!res.ok) {
-        return false;
-    }
-    return true;
-};
-
-// export default authFunc(panal);
 export default panal;

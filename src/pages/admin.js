@@ -57,7 +57,7 @@ const admin = () => {
                 let headers = new Headers({
                     "Content-Type": "application/json",
                 });
-                // headers.append("Authorization", "Bearer ");
+                headers.append("Authorization", "Bearer ");
 
                 const cookies = new Cookies();
                 cookies.set("SESSION", user.token, { path: "/", expires: 0 });

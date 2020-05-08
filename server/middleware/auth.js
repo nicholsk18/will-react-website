@@ -21,7 +21,8 @@ const auth = async (req, res, next) => {
         req.user = user;
         next();
     } catch (e) {
-        res.status(401).send();
+        res.redirect("/admin");
+        // res.status(401).send();
         // res.status(401).send({ error: "Please Authenticate." });
     }
 };
