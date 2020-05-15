@@ -26,7 +26,14 @@ router.post("/api/admin/login", async (req, res) => {
         );
         const token = await user.generateAuthToken();
         // res.send("localhost:3000/admin/panal");
-        res.status(200).send({ user, token });
+        res.status(200)
+            .cookie("auth", token, {
+                maxAge: 60 * 60 * 1000, // 1 hour
+                httpOnly: true,
+                secure: true,
+                sameSite: true,
+            })
+            .send({ user, token });
     } catch (e) {
         console.log(e);
         res.status(400).send();

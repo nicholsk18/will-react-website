@@ -40,6 +40,7 @@ const admin = () => {
         await fetch("/api/admin/login", sendForm)
             .then((res) => {
                 // should extract to new file
+                console.log(res);
                 const data = res.json();
 
                 if (!res.ok) {
@@ -57,9 +58,9 @@ const admin = () => {
                 headers.append("Authorization", "Bearer ");
 
                 const cookies = new Cookies();
-                cookies.set("auth", user.token, { path: "/", expires: 0 });
+                cookies.set("auth1", user.token, { path: "/", expires: 0 });
 
-                console.log(cookies.get("auth")); // Pacman
+                console.log(cookies.get("auth1"));
                 Router.push("/admin/panal");
                 return user;
             })

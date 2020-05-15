@@ -18,6 +18,7 @@ const auth = async (req, res, next) => {
 
         if (!user) {
             throw new Error();
+            res.redirect("/admin");
         }
         console.log(user);
         req.token = auth;
