@@ -1,5 +1,7 @@
 import { adminContactTitle } from "../../components/PageTitles";
 
-const adminContact = () => {};
+const adminContact = () => {
+    return <div>contact</div>;
+};
 
 export default adminContact;
