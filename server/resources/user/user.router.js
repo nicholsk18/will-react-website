@@ -9,6 +9,7 @@ const {
 
 const router = Router();
 
+// "/api/admin/"
 router.post("/create", createUser);
 
 router.post("/login", loginUser);

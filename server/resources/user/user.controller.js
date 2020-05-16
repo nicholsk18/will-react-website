@@ -1,3 +1,5 @@
+const validator = require("validator");
+
 const User = require("./user.model");
 const transport = require("../../utils/transport");
 
@@ -49,8 +51,9 @@ const logoutUser = async (req, res) => {
     }
 };
 
-const form = async (req, res) => {
+const form = (req, res) => {
     const { name, email, subject, message } = req.body;
+    console.log(name, email, subject, message);
 
     if (!validator.isEmail(email)) {
         return res.status(400).send();
@@ -59,7 +62,7 @@ const form = async (req, res) => {
     // Can use ContactMsg obj from utils/email
     const messageObj = {
         from: email,
-        to: process.env.USER_EMAIL,
+        to: process.env.USER_EMAIL_TEST,
         subject,
         html: `<h1>${name}</h1>
           <br />
@@ -69,6 +72,7 @@ const form = async (req, res) => {
 
     transport.sendMail(messageObj, (error, info) => {
         if (error) {
+            console.log(error);
             return res.status(404).send();
         }
         res.status(200).send();

@@ -1,3 +1,5 @@
+// whant to switch to this method
+
 import { adminAboutTitle } from "../../components/PageTitles";
 
 import React, { useEffect, useRef, useState } from "react";
