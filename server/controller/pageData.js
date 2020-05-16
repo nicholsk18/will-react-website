@@ -7,4 +7,6 @@ const TournamentsData = require("../models/homeData");
 
 const router = new express.Router();
 
+// router.route("/api/").get();
+
 module.exports = router;

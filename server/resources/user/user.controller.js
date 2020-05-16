@@ -1,12 +1,6 @@
-const express = require("express");
-const auth = require("../middleware/auth");
-const User = require("../models/user");
+const User = require("./user.model");
 
-const router = new express.Router();
-
-// needed to create new user
-// only need one user
-router.post("/users", async (req, res) => {
+const createUser = async (req, res) => {
     const user = new User(req.body);
 
     try {
@@ -16,9 +10,9 @@ router.post("/users", async (req, res) => {
     } catch (e) {
         res.status(400).send(e);
     }
-});
+};
 
-router.post("/api/admin/login", async (req, res) => {
+const loginUser = async (req, res) => {
     try {
         const user = await User.findByCredentials(
             req.body.username,
@@ -38,9 +32,9 @@ router.post("/api/admin/login", async (req, res) => {
         console.log(e);
         res.status(400).send();
     }
-});
+};
 
-router.post("/admin/logout", auth, async (req, res) => {
+const logoutUser = async (req, res) => {
     try {
         req.user.tokens = req.user.tokens.filter((token) => {
             return token.token !== req.token;
@@ -52,6 +46,10 @@ router.post("/admin/logout", auth, async (req, res) => {
     } catch (e) {
         res.status(500).send();
     }
-});
+};
 
-module.exports = router;
+module.exports = {
+    createUser,
+    loginUser,
+    logoutUser,
+};
