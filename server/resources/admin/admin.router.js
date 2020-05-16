@@ -1,9 +1,10 @@
 const { Router } = require("express");
-const getNext = require("./admin.controller");
+const { getNext } = require("./admin.controller");
 const session = require("../../middleware/session");
 
 const router = Router();
 
+// /admin
 router.get("/panal", session, getNext);
 
 router.get("/admin-home", session, getNext);

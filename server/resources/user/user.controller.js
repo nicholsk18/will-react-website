@@ -1,4 +1,5 @@
 const User = require("./user.model");
+const transport = require("../../utils/transport");
 
 const createUser = async (req, res) => {
     const user = new User(req.body);
@@ -48,8 +49,35 @@ const logoutUser = async (req, res) => {
     }
 };
 
+const form = async (req, res) => {
+    const { name, email, subject, message } = req.body;
+
+    if (!validator.isEmail(email)) {
+        return res.status(400).send();
+    }
+
+    // Can use ContactMsg obj from utils/email
+    const messageObj = {
+        from: email,
+        to: process.env.USER_EMAIL,
+        subject,
+        html: `<h1>${name}</h1>
+          <br />
+          <p>${message}</p>
+    `,
+    };
+
+    transport.sendMail(messageObj, (error, info) => {
+        if (error) {
+            return res.status(404).send();
+        }
+        res.status(200).send();
+    });
+};
+
 module.exports = {
     createUser,
     loginUser,
     logoutUser,
+    form,
 };
