@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const Editor = ({ content, callback }) => {
-    const [editorState, setEditorState] = useState(content);
+    const [editorState, setEditorState] = useState([content]);
 
     function saveContent() {
         // update api
@@ -19,7 +19,7 @@ const Editor = ({ content, callback }) => {
                 name="message"
                 id="message"
                 rows="5"
-                value={editorState.split(",")}
+                value={editorState}
                 onChange={(e) => setEditorState(e.target.value)}
             />
             <button onClick={saveContent}>Save</button>
