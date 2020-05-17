@@ -5,8 +5,6 @@ import { adminTitle } from "../components/PageTitles";
 import styles from "../pageStyles/Admin.module.css";
 import Router from "next/router";
 
-import Cookies from "universal-cookie";
-
 const admin = () => {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");

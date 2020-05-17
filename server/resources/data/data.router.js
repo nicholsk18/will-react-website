@@ -1,12 +1,17 @@
 const { Router } = require("express");
-const { getData, getStats } = require("./data.controller");
+const {
+    getData,
+    createData,
+    updateData,
+    getStats,
+    updateStats,
+} = require("./data.controller");
 
 const router = Router();
 
-// router.route("/api/").get();
 // /api/
-router.get("/data", getData);
+router.route("/data").get(getData).post(createData).put(updateData);
 
-router.get("/stats", getStats);
+router.route("/stats").get(getStats).put(updateStats);
 
 module.exports = router;

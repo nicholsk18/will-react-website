@@ -9,10 +9,10 @@ const adminTeam = () => {
         setIsEdited(true);
     }
 
-    function cancelContent(someStuff) {
+    function cancelContent(pageState) {
         // if want to create a preview?
-        if (someStuff) {
-            setPageContent(someStuff);
+        if (pageState) {
+            setPageContent(pageState);
         }
         setIsEdited(false);
     }
