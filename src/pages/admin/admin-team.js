@@ -1,51 +1,38 @@
 import { useState } from "react";
+import Editor from "../../utils/Editor";
 
 const adminTeam = () => {
-    const [editor, setEditor] = useState(false);
-    const [pageContent, setPageContent] = useState("");
-    const [editorState, setEditorState] = useState("");
+    const [isEdited, setIsEdited] = useState(false);
+    const [pageContent, setPageContent] = useState("api string here");
 
-    const valueFromDb = "string";
-    setPageContent(valueFromDb);
-
-    function editContent(event) {
-        setEditor(true);
+    function changeState() {
+        setIsEdited(true);
     }
 
-    function saveContent() {
-        setEditor(false);
+    function cancelContent(someStuff) {
+        // if want to create a preview?
+        if (someStuff) {
+            setPageContent(someStuff);
+        }
+        setIsEdited(false);
     }
-
-    const Editor = ({ content }) => {
-        return (
-            <textarea
-                className="form-control"
-                name="message"
-                id="message"
-                rows="5"
-                defaultValue={content}
-                onChange={(e) => setEditorState(e.target.value)}
-            />
-        );
-    };
-
     return (
         <div>
-            {editor ? (
+            {isEdited ? (
                 <div>
-                    <Editor content={pageContent} />
-                    <button onClick={saveContent}>save</button>
+                    {<Editor content={pageContent} callback={cancelContent} />}
                 </div>
             ) : (
                 <div>
-                    {/* 
+                    {/*
                         write a showContetent component
                         this component will figure out what and how to render
                     */}
                     <h1>{pageContent}</h1>
-                    <button onClick={editContent}>Edit</button>
+                    <button onClick={changeState}>Edit</button>
                 </div>
             )}
+            <button onClick={cancelContent}>Cancel</button>
         </div>
     );
 };
