@@ -1,15 +1,22 @@
 import { useState } from "react";
 
 const Editor = ({ content, callback }) => {
-    const [editorState, setEditorState] = useState([content]);
+    let str = "";
+    for (let item in content) {
+        str += content[item] + "\n";
+    }
+    // const str = one + "\n" + two;
+    console.log(str);
+    const [editorState, setEditorState] = useState(str);
 
     function saveContent() {
         // update api
 
         // callback returns back to original render
         // pass to call back with out saving here
-        // callback(editorState);
-        console.log(editorState);
+        callback(editorState.split("\n"));
+
+        console.log(editorState.split("\n"));
     }
 
     return (

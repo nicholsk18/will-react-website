@@ -8,8 +8,8 @@ import styles from "../../pageStyles/About.module.css";
 const adminAbout = () => {
     const [isEdited, setIsEdited] = useState(false);
     const [pageContent, setPageContent] = useState([
-        "About Will",
-        "Will is a proffesianal golfer based out of Birmingham Alabama. He was named All-Conference USA Second Team his junior year at UAB. His senior year, Will recorded two top-10 finishes and posted 11 rounds at or under par and finished the season with 71.67 stroke average. Will tourned pro in 2016 after finishing his final season at UAB. In 2017 he spent one year playing on the Asian tour. Will is currently is part of Korn Ferry tour.",
+        "<h1>About Will</h1>",
+        "<p>Will is a proffesianal golfer based out of Birmingham Alabama. He was named All-Conference USA Second Team his junior year at UAB. His senior year, Will recorded two top-10 finishes and posted 11 rounds at or under par and finished the season with 71.67 stroke average. Will tourned pro in 2016 after finishing his final season at UAB. In 2017 he spent one year playing on the Asian tour. Will is currently is part of Korn Ferry tour.</p>",
     ]);
 
     function changeState() {
