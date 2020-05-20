@@ -13,12 +13,19 @@ const adminAbout = () => {
     // to fix this need to send pagename in body
     useEffect(() => {
         async function getData() {
-            await fetch("/api/data")
+            const data = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Page-Name": "about",
+                },
+            };
+            await fetch("/api/data", data)
                 .then((res) => {
                     return res.json();
                 })
-                .then((data) => {
-                    console.log(data);
+                .then((pageData) => {
+                    setPageContent(pageData);
                 });
             // console.log(response.json());
         }

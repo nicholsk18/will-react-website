@@ -2,8 +2,11 @@ const PageData = require("./data.model");
 
 const getData = async (req, res) => {
     try {
-        const pageData = await PageData.find({ pageName: req.body.pageName });
-        res.send(pageData);
+        const pageName = req.headers["page-name"];
+        const pageData = await PageData.find({ pageName });
+
+        // console.log(pageName);
+        res.send(pageData[0].pageContent);
     } catch (e) {
         console.log(e);
         res.status(500).send(e);
@@ -15,8 +18,6 @@ const createData = async (req, res) => {
         pageName: req.body.name,
         pageContent: req.body.page,
     });
-
-    // pageData.items = { items: req.body.page };
 
     try {
         await pageData.save();
