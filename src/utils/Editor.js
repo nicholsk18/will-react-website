@@ -1,13 +1,7 @@
 import { useState } from "react";
 
 const Editor = ({ content, callback }) => {
-    let str = "";
-    for (let item in content) {
-        str += content[item] + "\n";
-    }
-    // const str = one + "\n" + two;
-    console.log(str);
-    const [editorState, setEditorState] = useState(str);
+    const [editorState, setEditorState] = useState(content);
 
     function saveContent() {
         // update api

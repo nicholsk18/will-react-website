@@ -11,8 +11,22 @@ const adminAbout = () => {
         "<h1>About Will</h1>",
         "<p>Will is a proffesianal golfer based out of Birmingham Alabama. He was named All-Conference USA Second Team his junior year at UAB. His senior year, Will recorded two top-10 finishes and posted 11 rounds at or under par and finished the season with 71.67 stroke average. Will tourned pro in 2016 after finishing his final season at UAB. In 2017 he spent one year playing on the Asian tour. Will is currently is part of Korn Ferry tour.</p>",
     ]);
+    const [editorState, setEditorState] = useState();
 
+    // will extract to its on util function
+    // will take a string and return a string
     function changeState() {
+        let concatedArray = "";
+        const strLength = pageContent.length;
+        for (let item = 0; item < strLength; item++) {
+            if (strLength - 1 === item) {
+                // keeps from last \n being added
+                concatedArray += pageContent[item];
+                break;
+            }
+            concatedArray += pageContent[item] + "\n";
+        }
+        setEditorState(concatedArray);
         setIsEdited(true);
     }
 
@@ -32,7 +46,7 @@ const adminAbout = () => {
             </Head>
             {isEdited ? (
                 <div>
-                    {<Editor content={pageContent} callback={cancelContent} />}
+                    {<Editor content={editorState} callback={cancelContent} />}
                 </div>
             ) : (
                 <div className="page" id={styles.pageAbout}>
@@ -54,15 +68,9 @@ const adminAbout = () => {
                                         id="title2"
                                         className={styles.sectionTitle}
                                     >
-                                        Early Life
+                                        {pageContent[2]}
                                     </h3>
-                                    <p id="p2">
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna
-                                        aliqua. Odio tempor orci dapibus
-                                        ultrices in iaculis nunc sed.
-                                    </p>
+                                    <p id="p2">{pageContent[3]}</p>
                                 </div>
                             </div>
                         </div>
@@ -72,15 +80,9 @@ const adminAbout = () => {
                         <div className="row">
                             <div className="col-sm-12 col-md-7">
                                 <h3 id="title3" className={styles.sectionTitle}>
-                                    Inspiration
+                                    {pageContent[3]}
                                 </h3>
-                                <p id="p3">
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                    Odio tempor orci dapibus ultrices in iaculis
-                                    nunc sed.
-                                </p>
+                                <p id="p3">{pageContent[4]}</p>
                             </div>
                             <div className="col-sm-12 col-md-5">
                                 <div className={styles.imgBox}>img</div>
@@ -99,15 +101,9 @@ const adminAbout = () => {
                                         id="title4"
                                         className={styles.sectionTitle}
                                     >
-                                        Future Plans
+                                        {pageContent[5]}
                                     </h3>
-                                    <p id="p4">
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna
-                                        aliqua. Odio tempor orci dapibus
-                                        ultrices in iaculis nunc sed.
-                                    </p>
+                                    <p id="p4">{pageContent[6]}</p>
                                 </div>
                             </div>
                         </div>
@@ -117,15 +113,9 @@ const adminAbout = () => {
                         <div className="row">
                             <div className="col-sm-12 col-md-7">
                                 <h3 id="title5" className={styles.sectionTitle}>
-                                    How donation can help?
+                                    {pageContent[7]}
                                 </h3>
-                                <p id="p5">
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                    Odio tempor orci dapibus ultrices in iaculis
-                                    nunc sed.
-                                </p>
+                                <p id="p5">{pageContent[8]}</p>
                             </div>
                             <div className="col-sm-12 col-md-5">
                                 <div className={styles.imgBox}>img</div>
