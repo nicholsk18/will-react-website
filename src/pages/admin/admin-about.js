@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Editor from "../../utils/Editor";
 import Layout from "../../components/layout";
 import { aboutTitle, aboutDesc } from "../../components/PageTitles";
@@ -7,11 +7,24 @@ import styles from "../../pageStyles/About.module.css";
 
 const adminAbout = () => {
     const [isEdited, setIsEdited] = useState(false);
-    const [pageContent, setPageContent] = useState([
-        "<h1>About Will</h1>",
-        "<p>Will is a proffesianal golfer based out of Birmingham Alabama. He was named All-Conference USA Second Team his junior year at UAB. His senior year, Will recorded two top-10 finishes and posted 11 rounds at or under par and finished the season with 71.67 stroke average. Will tourned pro in 2016 after finishing his final season at UAB. In 2017 he spent one year playing on the Asian tour. Will is currently is part of Korn Ferry tour.</p>",
-    ]);
+    const [pageContent, setPageContent] = useState([]);
     const [editorState, setEditorState] = useState();
+
+    // to fix this need to send pagename in body
+    useEffect(() => {
+        async function getData() {
+            await fetch("/api/data")
+                .then((res) => {
+                    return res.json();
+                })
+                .then((data) => {
+                    console.log(data);
+                });
+            // console.log(response.json());
+        }
+
+        getData();
+    });
 
     // will extract to its on util function
     // will take a string and return a string
@@ -46,7 +59,13 @@ const adminAbout = () => {
             </Head>
             {isEdited ? (
                 <div>
-                    {<Editor content={editorState} callback={cancelContent} />}
+                    {
+                        <Editor
+                            content={editorState}
+                            callback={cancelContent}
+                            pageName={"about"}
+                        />
+                    }
                 </div>
             ) : (
                 <div className="page" id={styles.pageAbout}>

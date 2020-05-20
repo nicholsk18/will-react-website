@@ -1,17 +1,31 @@
 import { useState } from "react";
 
-const Editor = ({ content, callback }) => {
+const Editor = ({ content, callback, pageName }) => {
     const [editorState, setEditorState] = useState(content);
 
-    function saveContent() {
+    async function saveContent() {
         // update api
+
+        const updatedPage = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: pageName,
+                page: editorState.split("\n"),
+            }),
+        };
+
+        await fetch("/api/data/", updatedPage).then((res) => {
+            console.log(res);
+        });
 
         // callback returns back to original render
         // pass to call back with out saving here
         callback(editorState.split("\n"));
-
-        console.log(editorState.split("\n"));
     }
+    console.log(pageName);
 
     return (
         <div>

@@ -1,18 +1,17 @@
 const mongoose = require("mongoose");
 
-const pageData = new mongoose.Schema({
+const pageSchema = new mongoose.Schema({
     pageName: {
-        type=String,
+        type: String,
         trim: true,
-        required: true
+        required: true,
     },
-    pageContent: [{
-        items: {
-            type: String,
-            trim: true,
-            required: true
-        }
-    }]
+    pageContent: {
+        type: Array,
+        required: true,
+    },
 });
 
-module.exports = pageData;
+const PageData = mongoose.model("PageData", pageSchema);
+
+module.exports = PageData;
