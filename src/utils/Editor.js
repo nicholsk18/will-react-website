@@ -7,25 +7,25 @@ const Editor = ({ content, callback, pageName }) => {
         // update api
 
         const updatedPage = {
-            method: "POST",
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                name: pageName,
-                page: editorState.split("\n"),
+                pageName,
+                pageContent: editorState
+                    .split("\n")
+                    .filter((item) => item !== ""),
             }),
         };
 
-        await fetch("/api/data/", updatedPage).then((res) => {
-            console.log(res);
-        });
+        await fetch("/api/data/", updatedPage).then((res) => console.log(res));
+        // .then((data) => console.log(data));
 
         // callback returns back to original render
         // pass to call back with out saving here
-        callback(editorState.split("\n"));
+        callback();
     }
-    console.log(pageName);
 
     return (
         <div>

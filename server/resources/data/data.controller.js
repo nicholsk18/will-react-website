@@ -3,10 +3,10 @@ const PageData = require("./data.model");
 const getData = async (req, res) => {
     try {
         const pageName = req.headers["page-name"];
-        const pageData = await PageData.find({ pageName });
+        const pageData = await PageData.findOne({ pageName });
 
         // console.log(pageName);
-        res.send(pageData[0].pageContent);
+        res.send(pageData.pageContent);
     } catch (e) {
         console.log(e);
         res.status(500).send(e);
@@ -15,8 +15,8 @@ const getData = async (req, res) => {
 
 const createData = async (req, res) => {
     const pageData = new PageData({
-        pageName: req.body.name,
-        pageContent: req.body.page,
+        pageName: req.body.pageName,
+        pageContent: req.body.pageContent,
     });
 
     try {
@@ -28,7 +28,19 @@ const createData = async (req, res) => {
     }
 };
 
-const updateData = async (req, res) => {};
+const updateData = async (req, res) => {
+    const { pageName, pageContent } = req.body;
+
+    // need validation?
+    try {
+        const pageData = await PageData.findOne({ pageName });
+        pageData.pageContent = pageContent;
+        pageData.save();
+        res.status(200).send();
+    } catch (e) {
+        console.log(e);
+    }
+};
 
 const getStats = async (req, res) => {};
 const updateStats = async (req, res) => {};

@@ -10,7 +10,7 @@ const {
 const router = Router();
 
 // /api/
-router.route("/data").get(getData).post(createData).put(updateData);
+router.route("/data").get(getData).post(createData).patch(updateData);
 
 router.route("/stats").get(getStats).put(updateStats);
 

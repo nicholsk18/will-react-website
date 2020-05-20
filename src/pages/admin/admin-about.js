@@ -31,12 +31,17 @@ const adminAbout = () => {
         }
 
         getData();
-    });
+    }, [pageContent]);
 
     // will extract to its on util function
     // will take a string and return a string
     function changeState() {
         let concatedArray = "";
+
+        // const content = pageContent.filter((item) => {
+        //     return item !== "";
+        // });
+
         const strLength = pageContent.length;
         for (let item = 0; item < strLength; item++) {
             if (strLength - 1 === item) {
@@ -46,6 +51,7 @@ const adminAbout = () => {
             }
             concatedArray += pageContent[item] + "\n";
         }
+
         setEditorState(concatedArray);
         setIsEdited(true);
     }
@@ -106,9 +112,9 @@ const adminAbout = () => {
                         <div className="row">
                             <div className="col-sm-12 col-md-7">
                                 <h3 id="title3" className={styles.sectionTitle}>
-                                    {pageContent[3]}
+                                    {pageContent[4]}
                                 </h3>
-                                <p id="p3">{pageContent[4]}</p>
+                                <p id="p3">{pageContent[5]}</p>
                             </div>
                             <div className="col-sm-12 col-md-5">
                                 <div className={styles.imgBox}>img</div>
@@ -127,9 +133,9 @@ const adminAbout = () => {
                                         id="title4"
                                         className={styles.sectionTitle}
                                     >
-                                        {pageContent[5]}
+                                        {pageContent[6]}
                                     </h3>
-                                    <p id="p4">{pageContent[6]}</p>
+                                    <p id="p4">{pageContent[7]}</p>
                                 </div>
                             </div>
                         </div>
@@ -139,9 +145,9 @@ const adminAbout = () => {
                         <div className="row">
                             <div className="col-sm-12 col-md-7">
                                 <h3 id="title5" className={styles.sectionTitle}>
-                                    {pageContent[7]}
+                                    {pageContent[8]}
                                 </h3>
-                                <p id="p5">{pageContent[8]}</p>
+                                <p id="p5">{pageContent[9]}</p>
                             </div>
                             <div className="col-sm-12 col-md-5">
                                 <div className={styles.imgBox}>img</div>
