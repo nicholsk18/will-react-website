@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import Editor from "../../utils/Editor";
 import Layout from "../../components/layout";
-import { aboutTitle, aboutDesc } from "../../components/PageTitles";
+import { aboutTitle } from "../../components/PageTitles";
 import styles from "../../pageStyles/About.module.css";
 
 const adminAbout = () => {

@@ -13,25 +13,32 @@ const adminTournaments = () => {
 
     // to fix this need to send pagename in body
     useEffect(() => {
-        async function getData() {
-            const data = {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Page-Name": "tournaments",
-                },
-            };
-            await fetch("/api/data", data)
-                .then((res) => {
-                    return res.json();
-                })
-                .then((pageData) => {
-                    setPageContent(pageData);
-                });
-        }
+        const abortController = new AbortController();
+        const signal = abortController.signal;
 
-        getData();
-    }, [pageContent]);
+        // async function getData() {
+        const data = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Page-Name": "tournaments",
+            },
+            signal,
+        };
+        fetch("/api/data", data)
+            .then((res) => {
+                return res.json();
+            })
+            .then((pageData) => {
+                setPageContent(pageData);
+            });
+        // }
+        // getData();
+
+        return function cleanup() {
+            abortController.abort();
+        };
+    }, [pageContent, setPageContent]);
 
     // will extract to its on util function
     // will take a string and return a string

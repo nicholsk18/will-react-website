@@ -1,4 +1,17 @@
+import { useState, useEffect } from "react";
+
 const Stats = () => {
+    const [stats, setStats] = useState();
+
+    useEffect(() => {
+        async function getStats() {
+            await fetch(
+                "https://statdata.pgatour.com/players/51567/2020results.json"
+            )
+                .then((res) => res.json())
+                .then((data) => console.log(data));
+        }
+    }, [stats]);
     return (
         <div className="row">
             <div className="col-sm-12 col-md-3 text-center">
