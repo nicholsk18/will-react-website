@@ -63,7 +63,6 @@ const adminAbout = () => {
         <Layout>
             <Head>
                 <title>{aboutTitle}</title>
-                <meta name="description" content={aboutDesc} />
             </Head>
             {isEdited ? (
                 <div>

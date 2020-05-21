@@ -8,6 +8,7 @@ const Editor = ({ content, callback, pageName }) => {
 
         const updatedPage = {
             method: "PATCH",
+            // method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
