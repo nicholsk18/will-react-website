@@ -47,21 +47,23 @@ const tournaments = () => {
 
                                 <div className="col-xs-6 col-md-4 text-center">
                                     <table className="mx-auto my-3 stats-rounds">
-                                        <tr className="border-bottom">
-                                            <th colSpan="4"> Round Score</th>
-                                        </tr>
-                                        <tr className="border-bottom">
-                                            <th className="p-1">R1</th>
-                                            <th className="p-1">R2</th>
-                                            <th className="p-1">R3</th>
-                                            <th className="p-1">R4</th>
-                                        </tr>
-                                        <tr>
-                                            <td className="p-2">-</td>
-                                            <td className="p-2">-</td>
-                                            <td className="p-2">-</td>
-                                            <td className="p-2">-</td>
-                                        </tr>
+                                        <tbody>
+                                            <tr className="border-bottom">
+                                                <th colSpan="4">Round Score</th>
+                                            </tr>
+                                            <tr className="border-bottom">
+                                                <th className="p-1">R1</th>
+                                                <th className="p-1">R2</th>
+                                                <th className="p-1">R3</th>
+                                                <th className="p-1">R4</th>
+                                            </tr>
+                                            <tr>
+                                                <td className="p-2">-</td>
+                                                <td className="p-2">-</td>
+                                                <td className="p-2">-</td>
+                                                <td className="p-2">-</td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
 

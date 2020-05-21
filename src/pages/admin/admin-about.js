@@ -27,7 +27,6 @@ const adminAbout = () => {
                 .then((pageData) => {
                     setPageContent(pageData);
                 });
-            // console.log(response.json());
         }
 
         getData();
@@ -56,11 +55,7 @@ const adminAbout = () => {
         setIsEdited(true);
     }
 
-    function cancelContent(someStuff) {
-        // if want to create a preview?
-        if (someStuff) {
-            setPageContent(someStuff);
-        }
+    function cancelContent() {
         setIsEdited(false);
     }
 
