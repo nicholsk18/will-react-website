@@ -31,6 +31,9 @@ const adminTournaments = () => {
             })
             .then((pageData) => {
                 setPageContent(pageData);
+            })
+            .catch((e) => {
+                console.log(e);
             });
         // }
         // getData();
