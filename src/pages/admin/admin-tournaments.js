@@ -23,6 +23,7 @@ const adminTournaments = () => {
                 "Content-Type": "application/json",
                 "Page-Name": "tournaments",
             },
+            signal,
         };
         fetch("/api/data", data)
             .then((res) => {
@@ -41,27 +42,6 @@ const adminTournaments = () => {
             abortController.abort();
         };
     }, [pageContent, setPageContent]);
-
-    function createState() {
-        const data = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Page-Name": "tournaments",
-            },
-            signal,
-        };
-        fetch("/api/data", data)
-            .then((res) => {
-                return res.json();
-            })
-            .then((pageData) => {
-                setPageContent(pageData);
-            })
-            .catch((e) => {
-                console.log(e);
-            });
-    }
 
     // will extract to its on util function
     // will take a string and return a string
@@ -111,7 +91,9 @@ const adminTournaments = () => {
                         <div className="container section-30">
                             <h2 className={styles.title}>{pageContent[0]}</h2>
                             <hr className={styles.hLine} />
-                            <p className={styles.subTitle}>{pageContent[1]}</p>
+                            <p className={styles.subTitle}>
+                                &quot;{pageContent[1]}&quot;
+                            </p>
                         </div>
                     </div>
 
@@ -202,7 +184,6 @@ const adminTournaments = () => {
                             </div>
                         </div>
                     </div>
-                    <button onClick={createState}>Create New</button>
                     <button onClick={changeState}>Edit</button>
                 </div>
             )}
