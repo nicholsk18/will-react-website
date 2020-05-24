@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Editor = ({ content, callback, pageName }) => {
-    const [editorState, setEditorState] = useState(content);
+    const [editorState, setEditorState] = useState(
+        content
+            .filter((item) => item !== "")
+            .toString()
+            .replace(/,/g, "")
+    );
 
     async function saveContent() {
-        // update api
-
+        const saveArr = editorState
+            .split("\n")
+            .filter((item) => !item.startsWith("<--"));
         const updatedPage = {
             method: "PATCH",
             // method: "POST",
@@ -14,9 +20,7 @@ const Editor = ({ content, callback, pageName }) => {
             },
             body: JSON.stringify({
                 pageName,
-                pageContent: editorState
-                    .split("\n")
-                    .filter((item) => item !== ""),
+                pageContent: saveArr.filter((item) => item !== ""),
             }),
         };
 
@@ -34,7 +38,7 @@ const Editor = ({ content, callback, pageName }) => {
                 className="form-control"
                 name="message"
                 id="message"
-                rows="5"
+                rows="15"
                 value={editorState}
                 onChange={(e) => setEditorState(e.target.value)}
             />

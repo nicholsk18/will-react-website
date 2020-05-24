@@ -5,10 +5,15 @@ import { adminTournamentsTitle } from "../../components/PageTitles";
 import Layout from "../../components/layout";
 import styles from "../../pageStyles/Tournaments.module.css";
 import Stats from "../../components/Stats";
+import converter from "../../utils/converter";
 
 const adminTournaments = () => {
     const [isEdited, setIsEdited] = useState(false);
-    const [pageContent, setPageContent] = useState([]);
+    const [pageContent, setPageContent] = useState({
+        title: "",
+        subTitle: "",
+        events: [],
+    });
     const [editorState, setEditorState] = useState();
 
     // to fix this need to send pagename in body
@@ -30,7 +35,13 @@ const adminTournaments = () => {
                 return res.json();
             })
             .then((pageData) => {
-                setPageContent(pageData);
+                const [title, subTitle, ...events] = [...pageData];
+
+                setPageContent({
+                    title,
+                    subTitle,
+                    events,
+                });
             })
             .catch((e) => {
                 console.log(e);
@@ -41,16 +52,12 @@ const adminTournaments = () => {
         return function cleanup() {
             abortController.abort();
         };
-    }, [pageContent, setPageContent]);
+    }, [pageContent, setPageContent, converter]);
 
     // will extract to its on util function
     // will take a string and return a string
     function changeState() {
         let concatedArray = "";
-
-        // const content = pageContent.filter((item) => {
-        //     return item !== "";
-        // });
 
         const strLength = pageContent.length;
         for (let item = 0; item < strLength; item++) {
@@ -62,7 +69,7 @@ const adminTournaments = () => {
             concatedArray += pageContent[item] + "\n";
         }
 
-        setEditorState(concatedArray);
+        setEditorState(converter(pageContent));
         setIsEdited(true);
     }
 
@@ -89,10 +96,12 @@ const adminTournaments = () => {
                 <div className="page">
                     <div className={styles.banner}>
                         <div className="container section-30">
-                            <h2 className={styles.title}>{pageContent[0]}</h2>
+                            <h2 className={styles.title}>
+                                {pageContent.title}
+                            </h2>
                             <hr className={styles.hLine} />
                             <p className={styles.subTitle}>
-                                &quot;{pageContent[1]}&quot;
+                                {pageContent.subTitle}
                             </p>
                         </div>
                     </div>
@@ -164,25 +173,8 @@ const adminTournaments = () => {
                             <h3 className={styles.sectionTitle}>
                                 2020 Upcomming Events
                             </h3>
-
-                            {/* <div className="row">
-                                <div className="col-12">
-                                    <div className="stats-box mt-4">
-                                        <div className="row px-5 mt-3">
-                                            <div className="col-4">
-                                                <p>{pageContent[2]}</p>
-                                            </div>
-                                            <div className="col-4 text-center">
-                                                <p>{pageContent[3]}</p>
-                                            </div>
-                                            <div className="col-4 text-right">
-                                                <p>{pageContent[4]}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> */}
-                            {upcomingEvents(pageContent)}
+                            {/* display array of upcoming events */}
+                            {upcomingEvents(pageContent.events)}
                         </div>
                     </div>
                     <button onClick={changeState}>Edit</button>
@@ -196,7 +188,7 @@ const adminTournaments = () => {
 const upcomingEvents = (content) => {
     let data = [];
 
-    for (let i = 2; i < content.length; i += 3) {
+    for (let i = 0; i < content.length; i += 3) {
         data.push(
             <div className="row">
                 <div className="col-12">
