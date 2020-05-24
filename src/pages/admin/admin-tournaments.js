@@ -165,7 +165,7 @@ const adminTournaments = () => {
                                 2020 Upcomming Events
                             </h3>
 
-                            <div className="row">
+                            {/* <div className="row">
                                 <div className="col-12">
                                     <div className="stats-box mt-4">
                                         <div className="row px-5 mt-3">
@@ -181,7 +181,8 @@ const adminTournaments = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
+                            {upcomingEvents(pageContent)}
                         </div>
                     </div>
                     <button onClick={changeState}>Edit</button>
@@ -190,6 +191,34 @@ const adminTournaments = () => {
             <button onClick={cancelContent}>Cancel</button>
         </Layout>
     );
+};
+
+const upcomingEvents = (content) => {
+    let data = [];
+
+    for (let i = 2; i < content.length; i += 3) {
+        data.push(
+            <div className="row">
+                <div className="col-12">
+                    <div className="stats-box mt-4">
+                        <div className="row px-5 mt-3">
+                            <div className="col-4">
+                                <p>{content[i]}</p>
+                            </div>
+                            <div className="col-4 text-center">
+                                <p>{content[i + 1]}</p>
+                            </div>
+                            <div className="col-4 text-right">
+                                <p>{content[i + 2]}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    return data;
 };
 
 export default adminTournaments;
