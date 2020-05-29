@@ -38,7 +38,7 @@ const Editor = ({ content, callback, pageName }) => {
                 className="form-control"
                 name="message"
                 id="message"
-                rows="15"
+                rows="20"
                 value={editorState}
                 onChange={(e) => setEditorState(e.target.value)}
             />

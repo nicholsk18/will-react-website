@@ -19,6 +19,7 @@ const createData = async (req, res) => {
         pageContent: req.body.pageContent,
     });
 
+    console.log(pageData);
     try {
         await pageData.save();
         res.status(201).send(pageData);
